@@ -1,0 +1,21 @@
+server:
+  port: 9002
+
+spring:
+  application:
+    name: configuration-service
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/configs
+#        git:
+#          uri: file://${user.home}/application-config
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9001/eureka
+    enabled: true

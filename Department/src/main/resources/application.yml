@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: department-service
+  config:
+    import: "configserver:"
+  cloud:
+    config:
+      name: department
+      uri: http://localhost:9002
+    openfeign:
+      circuitbreaker:
+        enabled: true
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      EMPLOYEE-SERVICE:
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 2
+        failureRateThreshold: 20
+        waitDurationInOpenState: 10s
+# ถ้ากำหนดที่ config server circuit breaker จะไม่ทำงาน
+#  | Key                            | อธิบาย                                   |
+#  | ------------------------------ | ---------------------------------------- |
+#  | `enabled: true`                | เปิด Circuit Breaker สำหรับ Feign        |
+#  | `slidingWindowSize: 10`        | เก็บสถิติ 10 คำขอล่าสุด                  |
+#  | `minimumNumberOfCalls: 5`      | ต้องมีอย่างน้อย 2 คำขอก่อนจะเริ่มประเมิน |
+#  | `failureRateThreshold: 50`     | ถ้า 20% คำขอล้มเหลว → เปิดวงจร           |
+#  | `waitDurationInOpenState: 10s` | รอ 10 วินาทีก่อนลองอีกครั้ง              |

@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: organization-service
+  config:
+    import: "configserver:"
+  cloud:
+    config:
+      name: organization
+      uri: http://localhost:9002

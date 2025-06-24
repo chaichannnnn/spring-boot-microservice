@@ -15,46 +15,7 @@ import java.util.Optional;
 public class DepartmentService {
     private static final String SAMPLE_SERVICE = "sampleService";
 
-//    private final DepartmentRepository departmentRepository;
-//
     private final EmployeeClient employeeClient;
-
-//
-//    public List<Department> findAllDepartment() {
-//        return departmentRepository.findAll();
-//    }
-//
-//    //@HystrixCommand(fallbackMethod = "findDepartmentByIdRecovery")
-//    public Department findDepartmentById(String id) {
-//        Optional<Department> department = departmentRepository.findById(id);
-//        department.ifPresent(d -> {
-//            List<Employee> employees = employeeClient.findEmployeeByDepartmentId(d.getId());
-//            d.setEmployees(employees);
-//        });
-//
-//        return department.orElse(null);
-//    }
-//
-//    public Department findDepartmentByIdRecovery(String id) {
-//        return departmentRepository.findById(id).orElse(null);
-//    }
-//
-//    public Department addNewDepartment(Department department) {
-//        return departmentRepository.save(department);
-//    }
-//
-//    public Department updateDepartment(String departmentId, Department department) {
-//        departmentRepository.findById(departmentId).ifPresent(d -> department.setId(d.getId()));
-//        return departmentRepository.save(department);
-//    }
-//
-//    public void deleteDepartment(String departmentId) {
-//        departmentRepository.deleteById(departmentId);
-//    }
-//
-//    public List<Department> findDepartmentByOrganizationId(String organizationId) {
-//        return departmentRepository.findByOrganizationId(organizationId);
-//    }
 
     @CircuitBreaker(name = SAMPLE_SERVICE, fallbackMethod = "fallbackResponse")
     public Department testFindDepartment() {

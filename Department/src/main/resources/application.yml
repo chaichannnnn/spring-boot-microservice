@@ -15,10 +15,16 @@ resilience4j:
   circuitbreaker:
     instances:
       EMPLOYEE-SERVICE:
+        registerHealthIndicator: true
         slidingWindowSize: 10
-        minimumNumberOfCalls: 2
-        failureRateThreshold: 20
+        minimumNumberOfCalls: 5
+        failureRateThreshold: 50
         waitDurationInOpenState: 10s
+#    retry:
+#      instances:
+#        sampleClient:
+#          maxAttempts: 3
+#          waitDuration: 2s
 # ถ้ากำหนดที่ config server circuit breaker จะไม่ทำงาน
 #  | Key                            | อธิบาย                                   |
 #  | ------------------------------ | ---------------------------------------- |

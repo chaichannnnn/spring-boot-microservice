@@ -10,7 +10,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Service
 public class OrganizationService {
-    private final OrganizationRepository organizationRepository;
+//    private final OrganizationRepository organizationRepository;
 
 
 //    @Autowired
@@ -19,9 +19,9 @@ public class OrganizationService {
 //    @Autowired
 //    private EmployeeClient employeeClient;
 
-    public List<Organization> findAllOrganization() {
-        return organizationRepository.findAll();
-    }
+//    public List<Organization> findAllOrganization() {
+//        return organizationRepository.findAll();
+//    }
 
 //    public Organization findOrganizationById(String id) {
 //        Optional<Organization> organization = organizationRepository.findById(id);
@@ -33,17 +33,17 @@ public class OrganizationService {
 //        return organization.orElse(null);
 //    }
 
-    public Organization addNewOrganization(Organization organization) {
-        return organizationRepository.save(organization);
-    }
-
-    public Organization updateOrganization(String id, Organization organization) {
-        organizationRepository.findById(id).ifPresent(o -> organization.setId(o.getId()));
-        return organizationRepository.save(organization);
-    }
-
-    public void deleteOrganization(String id) {
-        organizationRepository.deleteById(id);
-    }
+//    public Organization addNewOrganization(Organization organization) {
+//        return organizationRepository.save(organization);
+//    }
+//
+//    public Organization updateOrganization(String id, Organization organization) {
+//        organizationRepository.findById(id).ifPresent(o -> organization.setId(o.getId()));
+//        return organizationRepository.save(organization);
+//    }
+//
+//    public void deleteOrganization(String id) {
+//        organizationRepository.deleteById(id);
+//    }
 
 }

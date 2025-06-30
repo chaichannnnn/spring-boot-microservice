@@ -118,6 +118,33 @@
                     </excludes>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>3.4.3</version>
+                <configuration>
+                    <to>
+                        <image>${docker.username}/spring-boot-microservice-organization</image>
+                        <tags>
+                            <tag>${project.version}</tag>
+                        </tags>
+                        <auth>
+                            <username>${docker.username}</username>
+                            <password>${docker.password}</password>
+                        </auth>
+                    </to>
+                    <container>
+                        <mainClass>com.chaichannnnn.organization.OrganizationApplication</mainClass>
+                        <jvmFlags>
+                            <jvmFlag>-Xms512m</jvmFlag>
+                            <jvmFlag>-Xmx1024m</jvmFlag>
+                        </jvmFlags>
+                        <ports>
+                            <port>8083</port>
+                        </ports>
+                    </container>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 

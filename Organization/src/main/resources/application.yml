@@ -6,4 +6,4 @@ spring:
   cloud:
     config:
       name: organization
-      uri: http://localhost:9002
+      uri: http://configuration-service:9002

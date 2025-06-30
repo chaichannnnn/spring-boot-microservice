@@ -6,7 +6,7 @@ spring:
   cloud:
     config:
       name: api-gateway
-      uri: http://localhost:9002
+      uri: http://configuration-service:9002
 
   data:
     redis:

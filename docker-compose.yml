@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  configuration-service:
+    image: chanchai9797/spring-boot-microservice-configuration-server
+    container_name: configuration-service
+    ports:
+      - "9002:9002"
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:9002/actuator/health" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - springboot-network
+
+  discovery-service:
+    image: chanchai9797/spring-boot-microservice-eureka-discovery
+    container_name: discovery-service
+    ports:
+      - "8761:8761"
+    depends_on:
+      - configuration-service
+    restart: always
+    networks:
+      - springboot-network
+
+  api-gateway-service:
+    image: chanchai9797/spring-boot-microservice-api-gateway
+    container_name: api-gateway-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - configuration-service
+    restart: always
+    networks:
+      - springboot-network
+
+  employee-service:
+    image: chanchai9797/spring-boot-microservice-employee
+    container_name: employee-service
+    ports:
+      - "8081:8081"
+    depends_on:
+      - configuration-service
+    restart: always
+    networks:
+      - springboot-network
+
+  department-service:
+    image: chanchai9797/spring-boot-microservice-department
+    container_name: department-service
+    ports:
+      - "8082:8082"
+    depends_on:
+      - configuration-service
+    restart: always
+    networks:
+      - springboot-network
+
+  organization-service:
+    image: chanchai9797/spring-boot-microservice-organization
+    container_name: organization-service
+    ports:
+      - "8083:8083"
+    depends_on:
+      - configuration-service
+    restart: always
+    networks:
+      - springboot-network
+
+networks:
+  springboot-network:
+    driver: bridge

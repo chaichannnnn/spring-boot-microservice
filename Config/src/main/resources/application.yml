@@ -17,5 +17,11 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://discovery-service:8761/eureka
     enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info

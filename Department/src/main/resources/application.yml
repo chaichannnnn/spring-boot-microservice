@@ -6,7 +6,7 @@ spring:
   cloud:
     config:
       name: department
-      uri: http://localhost:9002
+      uri: http://configuration-service:9002
     openfeign:
       circuitbreaker:
         enabled: true

@@ -3,15 +3,15 @@ package com.chaichannnnn.organization;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+//import org.springframework.data.annotation.Id;
+//import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
-@Document
+//@Document
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Organization {
-    @Id
+//    @Id
     private String id;
     private String name;
     private String address;

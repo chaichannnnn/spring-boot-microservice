@@ -11,30 +11,30 @@ public class OrganizationController {
     @Autowired
     private OrganizationService organizationService;
 
-    @GetMapping
-    public List<Organization> findAllOrganization() {
-        return organizationService.findAllOrganization();
-    }
+//    @GetMapping
+//    public List<Organization> findAllOrganization() {
+//        return organizationService.findAllOrganization();
+//    }
 
 //    @GetMapping("/{id}")
 //    public Organization findOrganizationById(@PathVariable String id) {
 //        return organizationService.findOrganizationById(id);
 //    }
 
-    @PostMapping
-    public Organization addOrganization(@RequestBody Organization organization) {
-        return organizationService.addNewOrganization(organization);
-    }
+//    @PostMapping
+//    public Organization addOrganization(@RequestBody Organization organization) {
+//        return organizationService.addNewOrganization(organization);
+//    }
+//
+//    @PutMapping("/{id}")
+//    public Organization putOrganization(@PathVariable String id, @RequestBody Organization organization) {
+//        return organizationService.updateOrganization(id, organization);
+//    }
 
-    @PutMapping("/{id}")
-    public Organization putOrganization(@PathVariable String id, @RequestBody Organization organization) {
-        return organizationService.updateOrganization(id, organization);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteOrganization(@PathVariable String id) {
-        organizationService.deleteOrganization(id);
-    }
+//    @DeleteMapping("/{id}")
+//    public void deleteOrganization(@PathVariable String id) {
+//        organizationService.deleteOrganization(id);
+//    }
 
     @GetMapping("/test")
     public Organization test() {

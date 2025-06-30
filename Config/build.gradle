@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.5.0'
     id 'io.spring.dependency-management' version '1.1.7'
+    id 'com.google.cloud.tools.jib' version '3.4.3'
 }
 
 group = 'com.chaichannnnn'
@@ -36,4 +37,20 @@ dependencyManagement {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+jib {
+    to {
+        image = "${project.property('dockerUsername')}/spring-boot-microservice-configuration-server"
+        tags = [project.version]
+        auth {
+            username = project.property('dockerUsername')
+            password = project.property('dockerPassword')
+        }
+    }
+    container {
+        mainClass = 'com.chaichannnnn.config.ConfigApplication'
+        jvmFlags = ['-Xms512m', '-Xmx1024m']
+        ports = ['9002']
+    }
 }

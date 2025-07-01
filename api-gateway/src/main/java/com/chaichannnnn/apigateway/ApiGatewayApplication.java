@@ -20,13 +20,13 @@ public class ApiGatewayApplication {
     @Autowired
     private ReactiveStringRedisTemplate redisTemplate;
 
-//    @PostConstruct
-//    public void testRedisConnection() {
-//        redisTemplate.opsForValue().set("hello", "world")
-//                .then(redisTemplate.opsForValue().get("hello"))
-//                .doOnNext(val -> System.out.println("Redis Value = " + val))
-//                .subscribe();
-//    }
+    @PostConstruct
+    public void testRedisConnection() {
+        redisTemplate.opsForValue().set("connect", "connected")
+                .then(redisTemplate.opsForValue().get("connect"))
+                .doOnNext(val -> System.out.println("redis status : " + val))
+                .subscribe();
+    }
 
     // Rate Limiting KeyResolver (IP-based)
     @Bean
